@@ -16,7 +16,7 @@ const CartItem = ({ item }) => {
   return (
     <Card>
       <CardMedia
-        image={item.media.source}
+        image={item.image.url}
         alt={item.name}
         className={classes.media}
       />
@@ -36,7 +36,9 @@ const CartItem = ({ item }) => {
             +
           </Button>
         </div>
-        <Button variant="contained" type="button" color="secondary"></Button>
+        <Button variant="contained" type="button" color="secondary">
+          REMOVE
+        </Button>
       </CardActions>
     </Card>
   );
