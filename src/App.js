@@ -68,7 +68,7 @@ const App = () => {
             />
           </Route>
           <Route>
-            <Checkout />
+            <Checkout cart={cart} />
           </Route>
         </Switch>
       </div>
