@@ -8,6 +8,7 @@ import {
   CircularProgress,
   Divider,
   Button,
+  CssBaseline,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 
@@ -23,6 +24,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
   const classes = useStyles();
+  const history = useHistory();
 
   useEffect(() => {
     const generateToken = async () => {
@@ -33,12 +35,12 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
         setCheckoutToken(token);
       } catch (error) {
-        console.log(error);
+        history.pushState("/");
       }
     };
 
     generateToken();
-  }, []);
+  }, [cart, history]);
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -100,6 +102,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
   return (
     <>
+      <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
